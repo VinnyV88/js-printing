@@ -2,6 +2,7 @@ const PDFDocument = require("pdfkit");
 // const PCLDocument = require('pclkit');
 const fs = require("fs");
 const pool = require("./config/connection.js");
+const num2words = require('number-to-words');
 
 // create a document and pipe to a blob
 const doc = new PDFDocument({margin:0});
@@ -60,6 +61,10 @@ async function createChecks(checkData) {
       .text(check.CCHKNO,	535.7480315,	557.007874)
       .text(check.CCFYR,	36.8503937,	571.1811024);
       
+    doc
+      .font("Courier-BoldOblique", 9)
+      .text((num2words.toWords(check.CCNET).toUpperCase() + ' AND ' + formatDec.format(check.CCNET).toString().split('.')[1] + '/100').padStart(75, '*'),	34.01574803,	622.2047244)
+
     doc
     .font("fonts/SecurePay6a.ttf", 20)
     .text("[=" + format$.format(check.CCNET) + "]", 272.1259843,	653.3858268);
