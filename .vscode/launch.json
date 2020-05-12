@@ -7,6 +7,15 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch V2",
+      "program": "${workspaceFolder}/print_checks_v2.js",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Program",
       "skipFiles": [
         "<node_internals>/**"
